@@ -1,0 +1,11 @@
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @onclick="OnClicked">@Text</button>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public string Text { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback OnClicked { get; set; }
+
+}

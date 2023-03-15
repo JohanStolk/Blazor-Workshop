@@ -1,0 +1,58 @@
+﻿@page "/step08"
+
+<h1>Step 08 - StateHasChanged 2</h1>
+<p>
+    Situations where we need to call StateHasChanged() manually are described <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor/components/rendering?view=aspnetcore-7.0">here</a>.
+</p>
+<p>
+    For example during async operations, see below (and in the async example of step 05).
+</p>
+In more complex applications: to render a component outside the subtree that's rerendered by a particular event the UI might involve:
+<ul>
+    <li>
+        Dispatching an event to one component.
+    </li>
+    <li>
+        Changing some state.
+    </li>
+    <li>
+        Rerendering a completely different component that isn't a descendant of the component receiving the event.
+    </li>
+</ul>
+One way to deal with this scenario is to provide a state management class, often as a dependency injection (DI) service.<br/>
+For this we can use Fluxor.
+<p>
+    Current count: @_currentCount
+</p>
+
+<p>
+    <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+</p>
+
+
+<ButtonNavigationComponent PrevUrl="/step07" NextUrl="/"/>
+
+
+@code {
+    private int _currentCount;
+    private bool Show { get; set; }
+
+    private async Task IncrementCount()
+    {
+        _currentCount++;
+    // Renders here automatically
+
+        await Task.Delay(1000);
+        _currentCount++;
+        StateHasChanged();
+
+        await Task.Delay(1000);
+        _currentCount++;
+        StateHasChanged();
+
+        await Task.Delay(1000);
+        _currentCount++;
+    // Renders here automatically
+    }
+
+}

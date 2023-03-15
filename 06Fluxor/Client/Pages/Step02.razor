@@ -1,0 +1,46 @@
+﻿@page "/step02"
+@using BlazorKnowledge.Flux.Store.Simple
+@using Fluxor
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+@inject IState<SimpleState> SimpleState
+@inject IDispatcher Dispatcher
+
+<div style="padding-left: 20px; font-size: x-large">
+    <h1>Setup the Store and use a Reducer</h1>
+
+    In the Flux project Store/Simple the minimal setup is given in Simple.cs:
+    <ul>
+        <li>The State (the SimpleState record)</li>
+        <li>An action to be dispatch to change the State (SimpleSetCounterAction record)</li>
+        <li>A static reducer method to actually do the change to the Store by creating a <i>new</i> state</li>
+    </ul>
+    To use these in this page we need to inject the state:
+    <pre>@@inject IState&lt;SimpleState&gt; SimpleState</pre>
+
+    and inherit from FluxorComponent:
+    <pre>@@inherits Fluxor.Blazor.Web.Components.FluxorComponent</pre>
+
+    The current state is: counter value is @SimpleState.Value.Counter at @SimpleState.Value.LastModified<br/><br/>
+    To 'change' it we need to Dispatch an Action, inject the Dispatcher for this:
+
+    <pre>@@inject IDispatcher Dispatcher</pre>
+
+    Dispatch the Action by clicking this button: <button @onclick="OnClicked">Get new state</button><br/><br/>
+    Refreshing the page will reset the state.<br/><br/>
+
+    Use asynchronous Effects in next page: <a href="/step03">Next</a>
+</div>
+
+@code {
+
+    private void OnClicked()
+    {
+        // Note: code cannot change state directly:
+        // SimpleState.Value.Counter += 3;
+
+        Console.WriteLine(SimpleState.Value.Counter);
+        Dispatcher.Dispatch(new SimpleSetCounterAction(SimpleState.Value.Counter + 2));
+    }
+
+}

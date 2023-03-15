@@ -1,0 +1,13 @@
+<div style="margin: 8px; background-color: chocolate; color: aliceblue">
+    @foreach (var item in Items)
+    {
+        <div>@item</div>
+    }
+</div>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public List<string> Items { get; set; } = new();
+
+}

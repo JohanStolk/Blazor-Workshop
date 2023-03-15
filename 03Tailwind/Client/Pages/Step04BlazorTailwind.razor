@@ -1,0 +1,46 @@
+﻿@page "/step04"
+
+<div class="m-4">
+    <h1 class="mb-4 text-4xl font-extrabold text-gray-900">Step 04 - Re-use Tailwind styling</h1>
+    <ul class="list-disc ml-8 text-3xl">
+        <li>
+            Added button styling to Blazor Button to re-use styling.
+            <div class="space-x-2 my-4">
+                <ButtonComponent Text="Button1"/>
+                <ButtonComponent Text="Button2"/>
+                <ButtonComponent Text="Button3"/>
+            </div>
+            <BannerComponent Text="A Banner with Tailwind style"/>
+        </li>
+        <li>
+            Basic layout using flex, flex-col for vertical layout:
+            <div class="flex flex-col space-y-2 my-2">
+                <ButtonComponent Text="Button1"/>
+                <ButtonComponent Text="Button2"/>
+                <ButtonComponent Text="Button3"/>
+            </div>
+            For horizontal side-by-side use flex-row:
+            <div class="flex flex-row space-x-2 my-2">
+                <ButtonComponent Text="Button1"/>
+                <ButtonComponent Text="Button2"/>
+                <ButtonComponent Text="Button3"/>
+            </div>
+
+            Combining:
+            <div class="flex flex-row space-x-2 my-2">
+                <div class="flex flex-col flex-grow space-y-2 my-2">
+                    <ButtonComponent Text="Button1"/>
+                    <ButtonComponent Text="Button2"/>
+                    <ButtonComponent Text="Button3"/>
+                </div>
+                <div class="flex flex-col flex-grow space-y-2 my-2">
+                    <ButtonComponent Text="Button1"/>
+                    <ButtonComponent Text="Button2"/>
+                    <ButtonComponent Text="Button3"/>
+                </div>
+
+            </div>
+        </li>
+        <li>Go to next page: <a href="/step05">Next</a></li>
+    </ul>
+</div>

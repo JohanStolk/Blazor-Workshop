@@ -1,0 +1,33 @@
+﻿@page "/step06"
+
+@inherits BlazorKnowledge.Client.Code.Step06InheritAndInjectInCodeBase
+
+<h1>Step 06 - Inherit and Dependency Injection in C#</h1>
+<ul>
+    <li>Add a file to the Pages folder: Step06InheritAndInjectInCode.razor with url /step06</li>
+    <li>Add a folder Code in the Client project and add a new C# class Step06InheritAndInjectInCodeBase deriving from ComponentBase</li>
+    <li>In the razor file add: <pre>@@inherits BlazorKnowledge.Client.Code.Step06InheritAndInjectInCodeBase</pre> before the html code</li>
+    <li>This is now the base class of this component/page, see base class source below for details</li>
+    <li>The base class used by the razor file, must be derived from ComponentBase</li>
+    <li>Note the different syntax for [Inject] (attribute)</li>
+    <li>[Inject] can only be used on classes derived from ComponentBase!</li>
+    <li>
+        <pre>
+
+public class Step06InheritAndInjectInCodeBase : ComponentBase
+{
+    [Inject] protected NavigationManager NavigationManager { get; set; } = null!;
+
+    protected void Callback(string url)
+    {
+        NavigationManager.NavigateTo(url);
+        Console.WriteLine($"the button was clicked at {DateTime.Now}");
+    }
+}
+        </pre>
+    </li>
+    <li>
+        This way of seperating C# and razor/html is prefered for more complex components
+    </li>
+</ul>
+<ButtonNavigationComponent PrevUrl="/step05" NextUrl="/step07"/>

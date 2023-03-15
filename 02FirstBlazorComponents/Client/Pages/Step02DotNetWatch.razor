@@ -1,0 +1,23 @@
+﻿@page "/step02"
+<a href="/">Go back</a>
+<h1>Step 02 - dotnet watch run</h1>
+<ul>
+    <li>Add a new file watch.bat to the Server folder</li>
+    <li>Add this line to the batchfile: <pre>dotnet watch run</pre></li>
+    <li>Run the batch file (double click)</li>
+    <li>Edit some html in one of the razor files: dotnet watch should do hotreload and show changes</li>
+    <li>Copy a page file (e.g. Index.razor) and paste it under another name in the same folder</li>
+    <li>Error shows in browser (An unhandled error has occurred. Reload) because conflicting @@page paths (see top of the razor page)</li>
+    <li>
+        Errors can be viewed using dev tools => Console <pre> ---> System.InvalidOperationException: The following routes are ambiguous: ...</pre>
+    </li>
+    <li>Update @@page path in copied file to a unique name, all is well now</li>
+    <li>To force rebuild in dotnet watch cmd: press ctrl-R inside cmd window</li>
+    <li>Whenever dotnet watch cannot do a hotreload it will ask the first time to recompile:
+        <pre>Do you want to restart your app - Yes (y) / No (n) / Always (a) / Never (v)?</pre>
+        don't forget to press A (enter)</li>
+    <li>Or better yet: now there's an option to set env DOTNET_WATCH_RESTART_ON_RUDE_EDIT to true, see <a href="https://github.com/dotnet/sdk/pull/23280/files">PR</a></li>
+    <li>Go to next page: <a href="/step03">Next</a></li>
+</ul>
+
+<FirstBlazorComponent></FirstBlazorComponent>

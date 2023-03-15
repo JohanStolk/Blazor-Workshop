@@ -1,0 +1,30 @@
+﻿@page "/step03"
+@using Fluxor
+@using BlazorKnowledge.Flux.Store.AppInfo
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+@inject IState<AppInfoState> AppInfoState
+@inject IDispatcher Dispatcher
+
+<div style="padding-left: 20px; font-size: x-large">
+    <h1>Using asynchronous Effects</h1>
+
+    In the Flux project Store/AppInfo a complete setup is given with state, actions, reducers and effects.
+
+    To use these in this page we need to inject the state:
+    <pre>@@inject IState&lt;AppInfoState&gt; AppInfoState</pre>
+
+    The state is: version @AppInfoState.Value.Version time @AppInfoState.Value.ServerTime
+    <br/>
+    <br/>
+    Dispatch the fetch Action by clicking this button: <button @onclick="OnClicked">Update state via Effect</button>
+    <br>
+    <br>
+    Use more asynchronous Effects in next page: <a href="/step04">Next</a>
+</div>
+
+@code {
+
+    private void OnClicked() => Dispatcher.Dispatch(new AppInfoFetchAction());
+
+}

@@ -1,0 +1,34 @@
+﻿@page "/step06"
+
+<div class="m-4">
+    <h1 class="head1">Step 06 - Customize Tailwind</h1>
+    <ul class="list-disc ml-8 text-3xl">
+        <li>
+            Create new colors, fonts, etc. using tailwind.config.js.
+            See <a href="https://tailwindcss.com/docs/adding-custom-styles">https://tailwindcss.com/docs/adding-custom-styles</a>
+            <br/>
+            <pre class="text-lg">
+theme: {
+        extend: {
+            colors: {
+                "company-light-blue": "rgba(164,204,234,1)",
+                "company-medium-blue": "rgba(124,170,214,1)",
+                "company-dark-blue": "rgba(83,137,194,1)",
+            },
+        },
+    },
+</pre>
+
+            <div class="flex flex-col space-y-2 font-company-regular text-lg py-2">
+                <div class="rounded-lg flex text-company-light-blue">text-company-light-blue</div>
+                <div class="rounded-lg flex text-company-medium-blue">text-company-medium-blue</div>
+                <div class="rounded-lg flex text-company-dark-blue">text-company-dark-blue</div>
+            </div>
+            <div class="flex flex-col space-y-2 font-company-regular text-white text-lg py-2">
+                <div class="py-1 px-2 h-10 rounded-lg flex bg-company-light-blue">bg-company-light-blue</div>
+                <div class="py-1 px-2 h-10 rounded-lg flex bg-company-medium-blue">bg-company-medium-blue</div>
+                <div class="py-1 px-2 h-10 rounded-lg flex bg-company-dark-blue">bg-company-dark-blue</div>
+            </div>
+        </li>
+    </ul>
+</div>

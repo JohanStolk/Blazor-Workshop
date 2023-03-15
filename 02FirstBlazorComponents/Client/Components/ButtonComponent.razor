@@ -1,0 +1,11 @@
+<button @onclick="OnClicked">@Text</button>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public string Text { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback OnClicked { get; set; }
+
+}

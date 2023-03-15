@@ -1,0 +1,21 @@
+﻿@page "/"
+
+<div style="padding-left: 20px; font-size: x-large">
+    <h1>Use Fluxor for state management with Blazor: setup</h1>
+
+    Best library for Flux pattern in .NET: <a href="https://github.com/mrpmorris/Fluxor">https://github.com/mrpmorris/Fluxor</a>.<br/><br/>
+    Create a new Flux class library project and add the NuGet package:
+    <ul>
+        <li>
+            Fluxor.Blazor.Web
+        </li>
+    </ul>
+    to the Flux project<br/>(for unit testing we prefer the seperation into a different project)<br/><br/>
+    Add an empty class called AssemblyScanDetector to the Flux project<br/><br/>
+    Add a reference from the Client to the Flux project<br/><br/>
+    Add this to Program.cs in the Client:
+    <pre>builder.Services.AddFluxor(o => o.ScanAssemblies(typeof(AssemblyScanDetector).Assembly));</pre>
+    To ensure the store is initialized: Edit App.razor and at the top of the file add the following mark-up:
+    <pre>&lt;Fluxor.Blazor.Web.StoreInitializer/&gt;</pre>
+    Setup Store in next page: <a href="/step02">Next</a>
+</div>

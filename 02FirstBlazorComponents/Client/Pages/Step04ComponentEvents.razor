@@ -1,0 +1,46 @@
+﻿@page "/step04"
+
+<a href="/step03">Go back</a>
+
+<h1>Step 04 - Component Events</h1>
+<ul>
+    <li>Add a new razor component 'ButtonComponent' to the Components folder</li>
+    <li>Add a Text string parameter to it</li>
+    <li>An EventCallback property type can be used to do callbacks from components to outer scope, like this:</li>
+    <li>
+        <pre>
+@@code {
+
+    [Parameter]
+    public EventCallback OnClicked { get; set; }
+
+}
+        </pre>
+    </li>
+    <li>
+        Create an html button to handle the click event and make it call the callback:
+        <pre>
+    &lt;button @@onclick="OnClicked"&gt;@@Text&lt;/button&gt;
+        </pre>
+    </li>
+    <li>
+        Example usage of this component in a page or other component:
+        <pre>
+&lt;ButtonComponent Text="Click Me" OnClicked="Callback"/&gt;
+        </pre>
+    </li>
+    <li>
+        Test it:<ButtonComponent Text="Click Me" OnClicked="Callback"/>
+        : Watch the Console.WriteLine results in the dev tools console tab
+    </li>
+    <li>Go to next page: <a href="/step05">Next</a></li>
+</ul>
+
+@code {
+
+    private void Callback()
+    {
+        Console.WriteLine($@"the button was clicked at {DateTime.Now}");
+    }
+
+}

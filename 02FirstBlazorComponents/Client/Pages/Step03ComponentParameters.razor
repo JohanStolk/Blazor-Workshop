@@ -1,0 +1,34 @@
+﻿@page "/step03"
+<a href="/step02">Go back</a>
+
+<h1>Step 03 - Component Parameters</h1>
+<ul>
+    <li>Add a new razor file 'BannerComponent.razor' to the Components folder</li>
+    <li>The [Parameter] attribute is used to pass properties into components, @@code denotes a C# region</li>
+    <li>
+        <pre>
+@@code {
+
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+
+}
+        </pre>
+    </li>
+    <li>
+        Add some html to show the text with @@Text:
+        <pre>
+    &lt;div style="background-color: chocolate; color: aliceblue; font-size: xx-large; padding: 6px; margin: 8px"&gt;@@Text&lt;/div&gt;
+        </pre>
+    </li>
+    <li>
+        Usage of this component anywhere else (e.g. in Index.razor):
+        <pre>
+    &lt;BannerComponent Text="Hello world"/&gt;
+        </pre>
+    </li>
+    <li>Go to next page: <a href="/step04">Next</a></li>
+</ul>
+
+<BannerComponent Text="Banner 1"/>
+<BannerComponent Text="Banner 2"></BannerComponent>

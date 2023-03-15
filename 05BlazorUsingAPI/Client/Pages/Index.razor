@@ -1,0 +1,54 @@
+﻿@page "/"
+
+<div style="padding-left: 20px; font-size: x-large">
+    <h1>Use an API with Swagger and NSwag generated proxies from Blazor</h1>
+    Add the NuGet packages:
+    <ul>
+        <li>
+            Swashbuckle.AspNetCore
+        </li>
+        <li>
+            NSwag.MSBuild
+        </li>
+    </ul>
+    to the Server project<br/><br/>
+
+    Add some swagger code lines to Program.cs, (see also
+    <a href="https://dev.to/kasuken/add-swagger-to-a-blazor-6-project-5flf">https://dev.to/kasuken/add-swagger-to-a-blazor-6-project-5flf</a>)
+    <pre>
+    builder.Services.AddSwaggerGen();
+
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blazor API V1");
+    });</pre>
+    Test swagger json:
+    <a href="/swagger/v1/swagger.json">/swagger/v1/swagger.json</a>
+    <br/>
+    Test swagger UI:
+    <a href="/swagger/index.html">/swagger/index.html</a>
+    <br/>
+    <br/>
+    Generate proxies in server .csproj using NSwag with arguments:
+    <ul>
+        <li>
+            webapi2swagger (to generate swagger json file)
+        </li>
+        <li>
+            swagger2csclient (to generate cs proxy code from swagger json file)
+        </li>
+    </ul>
+    (see Server .csproj for details &lt;Target Name="RunNSwag" BeforeTargets="AfterBuild"&gt; part)
+    <br/>
+    <br/>
+    Register the proxy in Program.cs :
+    <pre>
+void ConfigureClient(HttpClient x) => x.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+builder.Services.AddHttpClient&lt;IWeatherForecastClient, WeatherForecastClient&gt;(ConfigureClient);
+</pre>
+    In razor inject it: @@inject IWeatherForecastClient WeatherForecastClient
+    <br/>
+    <br/>
+    Test in next page: <a href="/fetchdata">Next</a>
+</div>

@@ -1,0 +1,20 @@
+@inject NavigationManager NavigationManager
+
+<ButtonComponent Text="Prev" OnClicked="@(() => Callback(PrevUrl))"></ButtonComponent>
+<ButtonComponent Text="Next" OnClicked="@(() => Callback(NextUrl))"/>
+
+@code {
+
+    [Parameter]
+    public string PrevUrl { get; set; } = string.Empty;
+
+    [Parameter]
+    public string NextUrl { get; set; } = string.Empty;
+
+    private void Callback(string url)
+    {
+        NavigationManager.NavigateTo(url);
+        Console.WriteLine($@"the button was clicked at {DateTime.Now}");
+    }
+
+}

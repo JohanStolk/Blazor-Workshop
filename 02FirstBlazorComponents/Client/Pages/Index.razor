@@ -1,0 +1,23 @@
+﻿@page "/"
+
+<h1>Step 01 - FirstBlazorComponent</h1>
+<ul>
+    <li>Take the 01CreateEmptyBlazorApp project as a starting point (Created by Visual Studio using Blazor Wasm empty project template)</li>
+    <li>What you see here is found in the Pages folder: the Index.razor file which describes a page, see @@page directive at the top</li>
+    <li>There's also an index.html in wwwroot which bootstraps the Blazor framework and has an error-message footer</li>
+    <li>Add a new folder 'Components' to the client project</li>
+    <li>Add a new file FirstBlazorComponent.razor in that folder and add some html to it</li>
+    <li>
+        To render this component in the Index.razor file (this page), add this below:
+        <pre>&#60;FirstBlazorComponent&#62;&#60;/FirstBlazorComponent&#62;</pre>
+    </li>
+    <li>Try to run the app</li>
+    <li>
+        It is compiling but the component is not working: we need to add <pre>@@using BlazorKnowledge.Client.Components</pre>
+        to _Imports.razor, note this has to be done manually for every new folder you create for razor files!<br/><br/>
+        (note the double @@ in the razor source code to escape @@)<br/><br/>
+    </li>
+    <li>Try to run the app (the Server project), it should show FirstBlazorComponent rendering in the page, see also next page</li>
+    <li>To debug also use the Server project as active project</li>
+    <li>Go to next page: <a href="/step02">Next</a></li>
+</ul>

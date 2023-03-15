@@ -1,0 +1,32 @@
+﻿@page "/step05"
+
+<div class="m-4">
+    <h1 class="head1">Step 05 - @@apply Tailwind syntax</h1>
+    <ul class="list-disc ml-8 text-3xl">
+        <li>
+            Create new styles using @@apply in tailwind.css
+            <br/>
+            <pre class="text-lg">
+.menuItemNormal {
+    @@apply hover:text-blue-400 hover:bg-slate-200
+}
+
+.menuItemActive {
+    @@apply font-bold text-blue-400 hover:bg-slate-200
+}
+</pre>
+            Tailwind generates new classes menuItemNormal and menuItemActive to minified css with given tailwind classes applied.
+            <div class="block bg-blue-800/20 m-2 p-2">
+                <div class="ml-8 flex items-baseline space-x-2">
+                    <a href="/" class="menuItemNormal block px-2 py-1 rounded-md">Home</a>
+                    <a href="/step02" class="menuItemNormal block px-2 py-1 rounded-md">Step2</a>
+                    <a href="/step03" class="menuItemNormal block px-2 py-1 rounded-md">Step3</a>
+                    <a href="/step04" class="menuItemNormal block px-2 py-1 rounded-md">Step4</a>
+                    <a href="/step05" class="menuItemActive block px-2 py-1 rounded-md">Step5</a>
+                    <a href="/step06" class="menuItemNormal block px-2 py-1 rounded-md">Step6</a>
+                </div>
+            </div>
+        </li>
+        <li>Go to next page: <a href="/step06">Next</a></li>
+    </ul>
+</div>

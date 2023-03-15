@@ -1,0 +1,35 @@
+﻿@page "/step07"
+
+<h1>Step 07 - StateHasChanged 1</h1>
+<p>
+    Generally speaking, the StateHasChanged() method is automatically called after a UI event is triggered.
+</p>
+<p>
+    For instance, after clicking a button element, the click event is raised, and the StateHasChanged() method is automatically called to notify the component that its state has changed and it should re-render.
+</p>
+
+<div>
+    <ButtonComponent Text="Add item" OnClicked="AddItemCallback"/>
+</div>
+
+<ItemsComponent Items="Items"/>
+
+<div>
+    <ButtonComponent Text="Toggle" OnClicked="ToggleCallback"/>
+</div>
+
+@if (Show)
+{
+    <div style="margin: 8px">
+        <ButtonNavigationComponent PrevUrl="/step06" NextUrl="/step08"/>
+    </div>
+}
+
+@code {
+
+    private bool Show { get; set; } = true;
+    private List<string> Items { get; } = new();
+
+    private void ToggleCallback() => Show = !Show;
+    private void AddItemCallback() => Items.Add(DateTime.Now.ToLongTimeString());
+}

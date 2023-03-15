@@ -1,0 +1,59 @@
+﻿@page "/step05"
+@inject NavigationManager NavigationManager
+
+<a href="/step04">Go back</a>
+
+<h1>Step 05 - Dependency Injection in Razor</h1>
+<ul>
+    <li>In the razor file add: <pre>@@inject NavigationManager NavigationManager</pre> preferably before the html code</li>
+    <li>This is now an injected property on our component/page</li>
+    <li>It can be used inside html code, e.g. this shows our current url:</li>
+    <li>
+        <pre>@@NavigationManager.Uri</pre>
+        <pre>result: @NavigationManager.Uri</pre>
+    </li>
+    <li>
+        Or it can be used inside C# code:<pre>private void ToStep02Clicked() => NavigationManager.NavigateTo("/step02");</pre>
+    </li>
+    <li>
+        Called by this button: <ButtonComponent Text="To step 2" OnClicked="ToStep02Clicked"/> (click to test)
+    </li>
+    <li>
+        To pass arguments to OnClicked, see code below in the actual source file (Step05InjectInRazor.razor)<br/>
+        <ButtonComponent Text="Home" OnClicked="@(() => Callback("/"))"></ButtonComponent>
+        <ButtonComponent Text="Next" OnClicked="@(() => Callback("/step06"))"/>
+    </li>
+    <li>
+        To call async methods check this code in the actual source file:<br/>
+        <ButtonComponent Text="@AsyncText" OnClicked="@(async () => await CallbackAsync("/step06"))"/>
+    </li>
+</ul>
+
+
+@code {
+
+    private void ToStep02Clicked() => NavigationManager.NavigateTo("/step02");
+
+    private void Callback(string url)
+    {
+        NavigationManager.NavigateTo(url);
+        Console.WriteLine($"the button was clicked at {DateTime.Now}");
+    }
+
+    private string AsyncText { get; set; } = "Next Async";
+
+    // example of an async method call
+    private async Task CallbackAsync(string url)
+    {
+        Console.WriteLine($"the button was clicked at {DateTime.Now}");
+        AsyncText += "3";
+        await Task.Delay(1000);
+        AsyncText += "2";
+        StateHasChanged();
+        await Task.Delay(1000);
+        AsyncText += "1";
+        StateHasChanged();
+        await Task.Delay(1000);
+        NavigationManager.NavigateTo(url);
+    }
+}

@@ -1,0 +1,36 @@
+﻿@page "/step02"
+
+<div style="padding-left: 20px; font-size: x-large">
+    <h1>Step 02 - Use Tailwind CSS</h1>
+    <ul>
+        <li>
+            <br/>
+            Add this line to the head section of index.html:
+            <pre>
+    &lt;link href="css/tailwind.min.css" rel="stylesheet"/&gt;
+        </pre>
+        </li>
+        <li>
+            Run the tailwindwatch.bat in a cmd window, it converts the tailwind.css into a tailwind.min.css that is used by the application.<br/><br/>
+        </li>
+        <li>Run application using the watch.bat (in the Server project), it should show this page with default tailwind style (most styling removed such as h1)</li>
+        <li>See here for the reason why: <a href="https://tailwindcss.com/docs/preflight">https://tailwindcss.com/docs/preflight</a><br/><br/></li>
+        <li>Next step is to actually use tailwind classes on our html elements.<br/><br/></li>
+        <li>Go to next page: <a href="/step03">Next</a></li>
+    </ul>
+
+    <br/>
+    <br/>
+    <strong>
+        Note: check the tailwindbatch cmd window once in a while!
+    </strong>
+    <br/>
+    because it can end with memory errors:
+    <br/>
+    <pre>
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+1: 00007FF7F02C19EF v8::internal::CodeObjectRegistry::~CodeObjectRegistry+114175
+</pre>
+    <br/>
+    also errors in configuration may cause it to print out error info so keep an eye on this.
+</div>
